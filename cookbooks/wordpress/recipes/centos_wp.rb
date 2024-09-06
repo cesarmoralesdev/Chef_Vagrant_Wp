@@ -4,7 +4,7 @@ directory "/opt/" do
 end
 
 execute "get wordpress" do
-    command "curl -o /tmp/wordpress.zip https://wordpress.org/latest.zip"
+    command "curl -o /tmp/wordpress.zip https://es.wordpress.org/wordpress-6.6.1-es_ES.zip"
     action :run
     not_if { ::File.exist?('/tmp/wordpress.zip') }
 end
