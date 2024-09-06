@@ -35,13 +35,13 @@ execute 'create_mysql_user' do
     action :run
     not_if "mysql -e \"SELECT User, Host FROM mysql.user WHERE User = '#{db_user}' AND Host = '#{wp_ip}'\" | grep #{db_user}"
 end
-# Cesar Ejecutar comando para crear el usuario y otorgar permisos
+# Actividad01 Ejecutar comando para crear el usuario y otorgar permisos
 execute 'create_mysql_user' do
     command "mysql -e \"CREATE USER '#{db_user}'@'#{client_db_ip1}' IDENTIFIED BY '#{db_pswd}'; GRANT ALL PRIVILEGES ON wordpress.* TO '#{db_user}'@'#{client_db_ip1}'; FLUSH PRIVILEGES;\""
     action :run
     not_if "mysql -e \"SELECT User, Host FROM mysql.user WHERE User = '#{db_user}' AND Host = '#{client_db_ip1}'\" | grep #{db_user}"
 end
-# Cesar Ejecutar comando para crear el usuario y otorgar permisos
+# Actividad01 Ejecutar comando para crear el usuario y otorgar permisos
 execute 'create_mysql_user' do
     command "mysql -e \"CREATE USER '#{db_user}'@'#{client_db_ip2}' IDENTIFIED BY '#{db_pswd}'; GRANT ALL PRIVILEGES ON wordpress.* TO '#{db_user}'@'#{client_db_ip2}'; FLUSH PRIVILEGES;\""
     action :run
